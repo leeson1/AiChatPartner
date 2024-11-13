@@ -1,0 +1,38 @@
+name: chat
+description: AI聊天助手
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.2.0 <4.0.0" # 如果需要使用 Flutter SDK 3.16.7，请将此处修改为 ">=3.2.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+    
+  mpflutter_core: ^2.7.5
+  mpflutter_build_tools: ^2.7.5
+  mpflutter_wechat_api: ^2.2.3
+  mpflutter_wechat_mapview: ^0.0.3
+  es_compression: ^2.0.10
+  get: ^4.6.5
+  intl: ^0.18.1
+  cupertino_icons: ^1.0.8
+  dio: ^5.7.0
+  provider: ^6.1.2
+  shared_preferences: ^2.3.2
+  web_socket_channel: ^2.4.0  # 或最新版本
+
+# flutter:
+#   uses-material-design: true
+#   fonts:
+#     - family: Roboto
+#       fonts:
+#         - asset: fonts/Roboto-Regular.ttf
+#         - asset: fonts/Roboto-Bold.ttf
+#     - family: Noto Sans SC
+#       fonts:
+#         - asset: fonts/NotoSansSC-Regular.ttf
+#   assets:
+#     - lib/images/user_logo.jpg
