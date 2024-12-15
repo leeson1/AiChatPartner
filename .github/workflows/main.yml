@@ -1,0 +1,34 @@
+name: Check for Sensitive Information
+
+on: [push, pull_request]
+
+jobs:
+  check-secrets:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Git Secrets
+      run: |
+        sudo apt-get update
+        git clone https://github.com/awslabs/git-secrets.git
+        cd git-secrets
+        sudo make install
+
+    - name: Initialize Git Secrets
+      run: git secrets --install
+
+    - name: Register patterns
+      run: |
+        git secrets --add '${{ secrets.ADDR }}'
+
+    - name: Scan for sensitive information
+      run: git secrets --scan
+
+    - name: Fail if sensitive information is found
+      if: failure()
+      run: |
+        echo "Sensitive information found in the commit. Please remove it and try again."
+        exit 1
